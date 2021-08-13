@@ -27,6 +27,8 @@ The game will consist of a canvas on a single screen where the player will start
 
 I'll implement a clickable 'How to Play', a mute/unmute music and sound button, links to my GitHub and LinkedIn (potentially more later), as well as a restart button.
 
+![Screenshot 2021-08-12 231941](https://user-images.githubusercontent.com/85643458/129403530-9bf894fa-a810-4d98-882c-a9c27e419310.png)
+
 ## 4. Architecture and Technology
 
 Everything will be implemented with canvas, using assets I've either found online or created myself.
