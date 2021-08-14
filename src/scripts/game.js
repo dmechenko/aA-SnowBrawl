@@ -1,12 +1,12 @@
-const bgImg = new Image()
-bgImg.src = "./src/assets/background.png"
+import Player from "./player";
+import Utilities from "./utilities";
 
-class Game {
-    constructor(ctx, player){
+class SnowBrawl {
+    constructor(ctx){
         this.ctx = ctx;
-        this.player = player;
+        this.player = new Player(this.ctx);
     }
-
+//event handler
 }
 
-module.exports = Game;
+export default SnowBrawl
