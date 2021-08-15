@@ -1,4 +1,10 @@
 import bearBoy from "../assets/BearBoy.png"
+import bearBoyIdleRight from "../assets/bearBoyIdleRight.png"
+import bearBoyIdleLeft from "../assets/bearBoyIdleLeft.png"
+import bearBoyRunRight from "../assets/bearBoyRunRight.png"
+import bearBoyRunLeft from "../assets/bearBoyRunLeft.png"
+
+
 const platform = new Image();
 platform.src = "../snowbrawl/src/assets/platform.png"
 
@@ -19,7 +25,19 @@ class Player {
         };
 
         this.spriteSheet = new Image();
-        this.spriteSheet.src = bearBoy
+        this.spriteSheet.src = bearBoy;
+
+        this.idleRight = new Image();
+        this.idleRight.src = bearBoyIdleRight;
+
+        this.idleLeft = new Image();
+        this.idleLeft.src = bearBoyIdleLeft;
+
+        this.runRight = new Image();
+        this.runRight.src = bearBoyRunRight;
+
+        this.runLeft = new Image();
+        this.runLeft.src = bearBoyRunLeft;
         // this.animate();
     }
 
@@ -65,12 +83,12 @@ class Player {
         if (this.keys["s"] && this.char.spriteSheetY < 28){
             this.char.spriteSheetY = 22;
             this.char.moving = true;
-            this.char.height / 2;
+            this.char.y = 255;
         }
         if (this.keys["s"] && this.char.spriteSheetY > 28){
             this.char.spriteSheetY = 35;
             this.char.moving = true;
-            this.char.height / 2;
+            this.char.y = 255;
         }
        
     }
@@ -81,8 +99,8 @@ class Player {
             else this.char.spriteSheetY = 0;
         }
         if (this.char.spriteSheetY > 28 && this.char.moving === false){
-            if (this.char.spriteSheetY > 54) this.char.spriteSheetY--
-            else this.char.spriteSheetY = 55;
+            if (this.char.spriteSheetY < 55) this.char.spriteSheetY++;
+            else this.char.spriteSheetY = 47;
         }
     }
 

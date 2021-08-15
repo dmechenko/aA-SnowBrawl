@@ -1,16 +1,16 @@
-import snowball from "../assets/Snowball.png"
+import snowball from "../assets/downscaledSnowball.png"
 
 class Snowball {
     constructor(ctx){
         this.ctx = ctx;
-        this.char = {
+        this.ball = {
             x: 0,
-            y: 0,
-            width: 170,
-            height: 170,
+            y: 270,
+            width: 30,
+            height: 30,
             frameX: 0,
             frameY: 0,
-            speed: 10,
+            speed: 15,
             moving: false
         };
 
@@ -23,11 +23,24 @@ class Snowball {
         this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
     }
 
-    // animate(){
-    //     this.ctx.clearRect(0, 0, this.char.width, this.char.height);
-    //     this.drawSprite(this.spriteSheet, 0, 0, this.char.width, this.char.height, 460, 270, this.char.width / 6, this.char.height / 6)
-    //     requestAnimationFrame(this.animate.bind(this));
-    // }
+    letFly(){
+        this.ball.x += this.ball.speed
+    }
+
+    animate(){
+        // this.ctx.clearRect(0, 0, this.ball.width, this.ball.height);
+        this.drawSnowball(this.spriteSheet, 
+            0, 
+            0, 
+            this.ball.width, 
+            this.ball.height, 
+            this.ball.x, 
+            this.ball.y, 
+            this.ball.width, 
+            this.ball.height)
+        // requestAnimationFrame(this.animate.bind(this));
+        this.letFly();
+    }
 
 }
 
