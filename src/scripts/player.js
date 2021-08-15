@@ -1,4 +1,6 @@
 import bearBoy from "../assets/BearBoy.png"
+const platform = new Image();
+platform.src = "../snowbrawl/src/assets/platform.png"
 
 class Player {
     constructor(ctx){
@@ -9,53 +11,102 @@ class Player {
             y: 250,
             width: 96,
             height: 96,
-            frameX: 0,
-            frameY: 0,
-            speed: 2,
-            moving: false,
-            lives: 3
+            spriteSheetX: 0,
+            spriteSheetY: 0,
+            speed: 10,
+            moving: false
+            // lives: 3
         };
 
         this.spriteSheet = new Image();
         this.spriteSheet.src = bearBoy
-        this.animate();
+        // this.animate();
     }
 
     drawBearBoy(img, sX, sY, sW, sH, dX, dY, dW, dH) {
         this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
     }
 
-    animate(){
-        this.ctx.clearRect(0, 0, 960, 480);
-        this.drawBearBoy(this.spriteSheet, 0, 0, this.char.width, this.char.height, this.char.x, this.char.y, this.char.width, this.char.height)
-        this.move();
-        requestAnimationFrame(this.animate.bind(this));
-    }
-
     onKeydown(e){
         this.keys[e.key] = true;
         this.char.moving = true;
         console.log(this.keys);
+        console.log(this.char.speed);
     }
 
     onKeyup(e){
         delete this.keys[e.key];
         this.char.moving = false;
+        this.char.y = 250;
     }
 
     move(){
         // debugger
-        if (this.keys["a"]){
+        if (this.keys["a"]&& this.char.x > 180){
+            this.char.spriteSheetY = 46;
+            while (this.char.spriteSheetY > 46){
+                this.char.spriteSheet--
+                this.char.spriteSheetY = 46;
+            }
+
             this.char.x -= this.char.speed;
+            this.char.moving = true;
         }
-        if (this.keys["d"]){
+        if (this.keys["d"] && this.char.x < 710){
+            this.char.spriteSheetY = 9;
+        
             this.char.x += this.char.speed;
+            this.char.moving = true;
         }
+        if (this.keys[" "]){
+            this.char.y -= this.char.speed;
+            this.char.moving = true;
+        }
+        if (this.keys["s"] && this.char.spriteSheetY < 28){
+            this.char.spriteSheetY = 22;
+            this.char.moving = true;
+            this.char.height / 2;
+        }
+        if (this.keys["s"] && this.char.spriteSheetY > 28){
+            this.char.spriteSheetY = 35;
+            this.char.moving = true;
+            this.char.height / 2;
+        }
+       
+    }
+
+    idleAnimationLogic(){
+        if (this.char.spriteSheetY < 28 && this.char.moving === false){
+            if (this.char.spriteSheetY < 8) this.char.spriteSheetY++
+            else this.char.spriteSheetY = 0;
+        }
+        if (this.char.spriteSheetY > 28 && this.char.moving === false){
+            if (this.char.spriteSheetY > 54) this.char.spriteSheetY--
+            else this.char.spriteSheetY = 55;
+        }
+    }
+
+    animate(){
+        this.ctx.clearRect(0, 0, 960, 480);
+        this.ctx.drawImage(platform, 230, 327)
+        this.drawBearBoy(this.spriteSheet,
+            this.char.spriteSheetY * this.char.width,
+            this.char.spriteSheetX * this.char.width, 
+            this.char.width, 
+            this.char.height, 
+            this.char.x, 
+            this.char.y, 
+            this.char.width, 
+            this.char.height)
+        this.move();
+        // requestAnimationFrame(this.animate.bind(this));
     }
 }
 // A (left) => 65
 // S (duck) => 83
 // D (right) => 68
 // SPACE (jump) => 32
+// frames 0-8 are idle animations for right facing
+// frames 47-55 are idle animations for left facing
 
 export default Player
