@@ -19,8 +19,8 @@ class SnowBrawl {
         this.spawnSnowball = 0;
         this.score = 0;
         this.difficulty = 5;
-        this.startAnimating(60);
         this.movementController();
+        this.startAnimating(60);
     }
 
     movementController(){
@@ -60,20 +60,23 @@ class SnowBrawl {
     }
 
     createSnowball(){
-        if (this.spawnSnowball % 150 === 0){
+        if (this.spawnSnowball % 100 === 0){
             this.difficulty++;
-            this.snowballArray.push(new Snowball(this.ctx, this.difficulty + 0.5));
+            this.snowballArray.push(new Snowball(this.ctx, this.difficulty + 0.25));
             console.log(this.snowballArray.length);
         }
         for (let i = 0; i < this.snowballArray.length; i++) {
             this.snowballArray[i].animate();
-            if (this.snowballArray[i].ball.x > 960){
+            if (this.utilities.detectCollision(this.player, this.snowballArray[i])){
+                alert('ya dead kid');
+            }
+            if (this.snowballArray[i].ball.x > 960 && this.snowballArray[i].initialX === 0){
+                this.snowballArray.splice(i, 1);
+                this.score++;
+            } else if (this.snowballArray[i].ball.x < 0 && this.snowballArray[i].initialX === 960){
                 this.snowballArray.splice(i, 1);
                 this.score++;
             }
-            // if (this.utilities.detectCollision(this.player, this.snowballArray[i])){
-            //     alert('ya dead kid');
-            // }
         }
     }
 }

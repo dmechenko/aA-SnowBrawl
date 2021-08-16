@@ -7,8 +7,8 @@ class Snowball {
     constructor(ctx, speed = 5){
         this.ctx = ctx;
         this.ball = {
-            x: 0,
-            // x: leftOrRight[Math.floor(Math.random() * duckOrNot.length)],
+            // x: 960,
+            x: leftOrRight[Math.floor(Math.random() * duckOrNot.length)],
             y: duckOrNot[Math.floor(Math.random() * duckOrNot.length)],
             width: 30,
             height: 30,
@@ -17,6 +17,8 @@ class Snowball {
             speed: speed,
             moving: false
         };
+        
+        this.initialX = this.ball.x
 
         this.spriteSheet = new Image();
         this.spriteSheet.src = snowball
@@ -26,9 +28,14 @@ class Snowball {
         this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
     }
 
-    letFly(){
-        let initialX = this.ball.x
+    letFlyRight(){
         this.ball.x += this.ball.speed
+        // this.ball.frameY++
+    }
+
+    letFlyLeft(){
+        this.ball.x -= this.ball.speed
+        // this.ball.frameY++
     }
 
     animate(){
@@ -44,7 +51,8 @@ class Snowball {
             this.ball.width, 
             this.ball.height
             )
-        this.letFly();
+        if (this.initialX === 0) this.letFlyRight();
+        else this.letFlyLeft();
     }
 
 }
