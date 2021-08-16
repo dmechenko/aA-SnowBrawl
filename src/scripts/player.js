@@ -15,13 +15,16 @@ class Player {
         this.keys = [];
         this.char = {
             x: 480,
-            y: 250,
+            y: 260,
             width: 116,
             height: 116,
             spriteSheetX: 0,
             spriteSheetY: 0,
             speed: 10,
-            moving: false
+            moving: false,
+            frameCount: 0,
+            jumping: false,
+            gravity: 5
             // lives: 3
         };
 
@@ -43,7 +46,8 @@ class Player {
     onKeyup(e){
         delete this.keys[e.key];
         this.char.moving = false;
-        this.char.y = 250;
+        this.char.jumping = false;
+        // this.char.y = 250;
     }
 
     move(){
@@ -65,33 +69,59 @@ class Player {
         if (this.keys[" "]){
             this.char.y -= this.char.speed;
             this.char.moving = true;
+            this.jumping = true;
+        }
+        if (this.keys[" "] === undefined && this.char.y > 250){
+            this.char.y -= 10
         }
         if (this.keys["s"] && this.char.spriteSheetY < 14){
             this.char.spriteSheetY = 13;
             this.char.moving = true;
-            this.char.y = 255;
+            this.char.y = 260;
         }
         if (this.keys["s"] && this.char.spriteSheetY > 13){
             this.char.spriteSheetY = 14;
             this.char.moving = true;
-            this.char.y = 255;
+            this.char.y = 260;
         }
        
     }
 
     idleAnimationLogic(){
         if (this.char.spriteSheetY < 14 && this.char.moving === false){
-            if (this.char.spriteSheetY < 8) this.char.spriteSheetY++
-            else this.char.spriteSheetY = 0;
+            if (this.char.frameCount < 2){
+                this.char.frameCount++;
+            } else if (this.char.spriteSheetY < 8){
+                this.char.spriteSheetY++;
+                this.char.frameCount = 0;
+            } else {
+                this.char.spriteSheetY = 0;
+                this.char.frameCount = 0;
+            }
+            // if (this.char.spriteSheetY < 8) this.char.spriteSheetY++
+            // else this.char.spriteSheetY = 0;
         }
         if (this.char.spriteSheetY > 13 && this.char.moving === false){
-            if (this.char.spriteSheetY < 27) this.char.spriteSheetY++;
-            else this.char.spriteSheetY = 19;
+            if (this.char.frameCount < 2){
+                this.char.frameCount++;
+            } else if (this.char.spriteSheetY < 27){
+                this.char.spriteSheetY++;
+                this.char.frameCount = 0;
+            } else {
+                this.char.spriteSheetY = 19;
+                this.char.frameCount = 0;
+            }
+            // if (this.char.spriteSheetY < 8) this.char.spriteSheetY++
+            // else this.char.spriteSheetY = 0;
         }
+        // if (this.char.spriteSheetY > 13 && this.char.moving === false){
+        //     if (this.char.spriteSheetY < 27) this.char.spriteSheetY++;
+        //     else this.char.spriteSheetY = 19;
+        // }
     }
 
     animate(){
-        this.ctx.clearRect(0, 0, 960, 480);
+        // this.ctx.clearRect(0, 0, 960, 480);
         this.ctx.drawImage(platform, 200, 85)
         this.drawBearBoy(this.spriteSheet,
             this.char.spriteSheetY * this.char.width,
@@ -102,6 +132,8 @@ class Player {
             this.char.y, 
             this.char.width, 
             this.char.height)
+        // this.ctx.fillRect(this.char.x, this.char.y, this.char.width, this.char.height)
+        
         this.move();
     }
 }

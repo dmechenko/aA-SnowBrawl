@@ -1,22 +1,24 @@
 import snowball from "../assets/downscaledSnowball.png"
 
+const duckOrNot = [270, 310];
+
 class Snowball {
     constructor(ctx){
         this.ctx = ctx;
         this.ball = {
             x: 0,
-            y: 270,
+            y: duckOrNot[Math.floor(Math.random() * duckOrNot.length)],
             width: 30,
             height: 30,
             frameX: 0,
             frameY: 0,
             speed: 15,
-            moving: false
+            moving: false,
+            gravity: 5
         };
 
         this.spriteSheet = new Image();
         this.spriteSheet.src = snowball
-        // this.animate();
     }
 
     drawSnowball(img, sX, sY, sW, sH, dX, dY, dW, dH) {
@@ -24,11 +26,11 @@ class Snowball {
     }
 
     letFly(){
+        let initialX = this.ball.x
         this.ball.x += this.ball.speed
     }
 
     animate(){
-        // this.ctx.clearRect(0, 0, this.ball.width, this.ball.height);
         this.drawSnowball(this.spriteSheet, 
             // this.ball.spriteSheetY * this.ball.width, 
             // this.ball.spriteSheetX * this.ball.width, 

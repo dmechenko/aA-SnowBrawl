@@ -22,9 +22,11 @@ document.addEventListener("DOMContentLoaded", function(){
     let snowFlakes = [];
     const width = 960;
     const height = 480;
+
     function random(min, max){
-        return min + Math.random() * (max - min + 1); //picks randon number between min and max
+        return min + Math.random() * (max - min + 1); //picks random number between min and max
     }
+
     function addToSnowflakes(){
         for (let i = 0; i < amountSnowflakes; i++) {
             snowFlakes.push({ // add n snowflakes as objects with properties
@@ -69,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function(){
         for (let i = 0; i < snowFlakes.length; i++){
             snowFlakes[i].x += snowFlakes[i].xVelocity; //increment x axis by velocity
             snowFlakes[i].y += snowFlakes[i].yVelocity; //increment y axis by velocity
-            if (snowFlakes[i].y > height){
+            if (snowFlakes[i].y > snowCanvas.height){
                 snowFlakes[i].x = Math.random() * snowCanvas.width; //reset the x axis of the snowflake to another random spot
                 snowFlakes[i].y = -50 //reset the y axis to be slightly off screen 
             }

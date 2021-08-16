@@ -5,6 +5,7 @@ import Utilities from "./utilities";
 class SnowBrawl {
     constructor(ctx){
         this.ctx = ctx;
+        this.ctx.font = 'small-caps bold 36px Calibri'
         this.snowballArray = [];
         this.player = new Player(this.ctx);
         this.snowball = new Snowball(this.ctx)
@@ -15,10 +16,11 @@ class SnowBrawl {
         this.now = "";
         this.then = "";
         this.elapsed = "";
+        this.spawnSnowball = 0;
+        this.score = 0;
         this.startAnimating(15);
         this.movementController();
     }
-//event handler
 
     movementController(){
         window.addEventListener("keydown", this.inputKeydown.bind(this))
@@ -27,7 +29,6 @@ class SnowBrawl {
 
     inputKeydown(e){
         this.player.onKeydown(e);
-        // console.log(this.fpsInterval);
     }
 
     inputKeyup(e){
@@ -48,22 +49,39 @@ class SnowBrawl {
         if (this.elapsed > this.fpsInterval) {
             this.then = this.now - (this.elapsed % this.fpsInterval);
             this.ctx.clearRect(0, 0, 980, 460);
+            this.ctx.fillText('SCORE: ' + this.score, 410, 40)
+            this.ctx.fillStyle = "#FFFFFF";
             this.player.animate();
             this.createSnowball();
             // this.snowballArray.forEach(snowball => {
             //     snowball.animate();
             // })
+            if (this.score % 2 === 0){
+                this.snowballArray.forEach(snowball => {
+                    snowball.ball.speed
+                })
+            }
             this.snowball.animate();
             this.player.idleAnimationLogic();
-            // if (this.utilities.detectCollision(this.player, this.snowball)){
-            //     alert('ya dead kid');
-            // }
+            this.spawnSnowball++
         }
     }
 
     createSnowball(){
-        let snowballN = new Snowball(this.ctx);
-        this.snowballArray.push(snowballN)
+        if (this.spawnSnowball % 50 === 0){
+            this.snowballArray.push(new Snowball(this.ctx));
+            console.log(this.snowballArray.length);
+        }
+        for (let i = 0; i < this.snowballArray.length; i++) {
+            this.snowballArray[i].animate();
+            if (this.snowballArray[i].ball.x > 960){
+                this.snowballArray.splice(i, 1);
+                this.score++;
+            }
+            // if (this.utilities.detectCollision(this.player, this.snowballArray[i])){
+            //     alert('ya dead kid');
+            // }
+        }
     }
 }
 
