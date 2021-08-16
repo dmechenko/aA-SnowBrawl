@@ -19,6 +19,7 @@ class SnowBrawl {
         this.spawnSnowball = 0;
         this.score = 0;
         this.difficulty = 5;
+        this.gameOver = false;
         this.movementController();
         this.startAnimating(60);
     }
@@ -44,14 +45,19 @@ class SnowBrawl {
     }
 
     animate(){
+        if (this.gameOver){
+            this.ctx.fillStyle = "#FF0000";
+            this.ctx.fillText('get fucked idiot', 360, 80)
+            return;
+        }
         requestAnimationFrame(this.animate.bind(this));
         this.now = Date.now();
         this.elapsed = this.now - this.then;
         if (this.elapsed > this.fpsInterval) {
             this.then = this.now - (this.elapsed % this.fpsInterval);
             this.ctx.clearRect(0, 0, 980, 460);
-            this.ctx.fillText('SCORE: ' + this.score, 410, 40)
             this.ctx.fillStyle = "#FFFFFF";
+            this.ctx.fillText('SCORE: ' + this.score, 410, 40)
             this.player.animate();
             this.createSnowball();
             this.player.idleAnimationLogic();
@@ -68,7 +74,7 @@ class SnowBrawl {
         for (let i = 0; i < this.snowballArray.length; i++) {
             this.snowballArray[i].animate();
             if (this.utilities.detectCollision(this.player, this.snowballArray[i])){
-                alert('ya dead kid');
+                this.gameOver = true;
             }
             if (this.snowballArray[i].ball.x > 960 && this.snowballArray[i].initialX === 0){
                 this.snowballArray.splice(i, 1);
