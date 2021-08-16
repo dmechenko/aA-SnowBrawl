@@ -18,7 +18,8 @@ class SnowBrawl {
         this.elapsed = "";
         this.spawnSnowball = 0;
         this.score = 0;
-        this.startAnimating(15);
+        this.difficulty = 5;
+        this.startAnimating(60);
         this.movementController();
     }
 
@@ -53,23 +54,15 @@ class SnowBrawl {
             this.ctx.fillStyle = "#FFFFFF";
             this.player.animate();
             this.createSnowball();
-            // this.snowballArray.forEach(snowball => {
-            //     snowball.animate();
-            // })
-            if (this.score % 2 === 0){
-                this.snowballArray.forEach(snowball => {
-                    snowball.ball.speed
-                })
-            }
-            this.snowball.animate();
             this.player.idleAnimationLogic();
             this.spawnSnowball++
         }
     }
 
     createSnowball(){
-        if (this.spawnSnowball % 50 === 0){
-            this.snowballArray.push(new Snowball(this.ctx));
+        if (this.spawnSnowball % 150 === 0){
+            this.difficulty++;
+            this.snowballArray.push(new Snowball(this.ctx, this.difficulty + 0.5));
             console.log(this.snowballArray.length);
         }
         for (let i = 0; i < this.snowballArray.length; i++) {

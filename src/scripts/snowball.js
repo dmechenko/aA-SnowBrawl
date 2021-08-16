@@ -1,20 +1,21 @@
 import snowball from "../assets/downscaledSnowball.png"
 
 const duckOrNot = [270, 310];
+const leftOrRight = [0, 960];
 
 class Snowball {
-    constructor(ctx){
+    constructor(ctx, speed = 5){
         this.ctx = ctx;
         this.ball = {
             x: 0,
+            // x: leftOrRight[Math.floor(Math.random() * duckOrNot.length)],
             y: duckOrNot[Math.floor(Math.random() * duckOrNot.length)],
             width: 30,
             height: 30,
             frameX: 0,
             frameY: 0,
-            speed: 15,
-            moving: false,
-            gravity: 5
+            speed: speed,
+            moving: false
         };
 
         this.spriteSheet = new Image();
