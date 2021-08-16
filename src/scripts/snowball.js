@@ -30,15 +30,17 @@ class Snowball {
     animate(){
         // this.ctx.clearRect(0, 0, this.ball.width, this.ball.height);
         this.drawSnowball(this.spriteSheet, 
-            0, 
-            0, 
+            // this.ball.spriteSheetY * this.ball.width, 
+            // this.ball.spriteSheetX * this.ball.width, 
+            0,
+            0,
             this.ball.width, 
             this.ball.height, 
             this.ball.x, 
             this.ball.y, 
             this.ball.width, 
-            this.ball.height)
-        // requestAnimationFrame(this.animate.bind(this));
+            this.ball.height
+            )
         this.letFly();
     }
 

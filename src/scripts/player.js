@@ -1,8 +1,9 @@
-import bearBoy from "../assets/BearBoy.png"
-import bearBoyIdleRight from "../assets/bearBoyIdleRight.png"
-import bearBoyIdleLeft from "../assets/bearBoyIdleLeft.png"
-import bearBoyRunRight from "../assets/bearBoyRunRight.png"
-import bearBoyRunLeft from "../assets/bearBoyRunLeft.png"
+// import bearBoy from "../assets/BearBoy.png"
+// import bearBoyIdleRight from "../assets/bearBoyIdleRight.png"
+// import bearBoyIdleLeft from "../assets/bearBoyIdleLeft.png"
+// import bearBoyRunRight from "../assets/bearBoyRunRight.png"
+// import bearBoyRunLeft from "../assets/bearBoyRunLeft.png"
+import bearBoy from "../assets/bearBoySpriteSheetUpdated.png"
 
 
 const platform = new Image();
@@ -15,8 +16,8 @@ class Player {
         this.char = {
             x: 480,
             y: 250,
-            width: 96,
-            height: 96,
+            width: 116,
+            height: 116,
             spriteSheetX: 0,
             spriteSheetY: 0,
             speed: 10,
@@ -26,19 +27,6 @@ class Player {
 
         this.spriteSheet = new Image();
         this.spriteSheet.src = bearBoy;
-
-        this.idleRight = new Image();
-        this.idleRight.src = bearBoyIdleRight;
-
-        this.idleLeft = new Image();
-        this.idleLeft.src = bearBoyIdleLeft;
-
-        this.runRight = new Image();
-        this.runRight.src = bearBoyRunRight;
-
-        this.runLeft = new Image();
-        this.runLeft.src = bearBoyRunLeft;
-        // this.animate();
     }
 
     drawBearBoy(img, sX, sY, sW, sH, dX, dY, dW, dH) {
@@ -61,17 +49,15 @@ class Player {
     move(){
         // debugger
         if (this.keys["a"]&& this.char.x > 180){
-            this.char.spriteSheetY = 46;
-            while (this.char.spriteSheetY > 46){
-                this.char.spriteSheet--
-                this.char.spriteSheetY = 46;
-            }
-
+            if (this.char.spriteSheetY >= 17) this.char.spriteSheetY--
+            else this.char.spriteSheetY = 17;
+     
             this.char.x -= this.char.speed;
             this.char.moving = true;
         }
         if (this.keys["d"] && this.char.x < 710){
-            this.char.spriteSheetY = 9;
+            if (this.char.spriteSheetY <= 10) this.char.spriteSheetY++
+            else this.char.spriteSheetY = 10;
         
             this.char.x += this.char.speed;
             this.char.moving = true;
@@ -80,13 +66,13 @@ class Player {
             this.char.y -= this.char.speed;
             this.char.moving = true;
         }
-        if (this.keys["s"] && this.char.spriteSheetY < 28){
-            this.char.spriteSheetY = 22;
+        if (this.keys["s"] && this.char.spriteSheetY < 14){
+            this.char.spriteSheetY = 13;
             this.char.moving = true;
             this.char.y = 255;
         }
-        if (this.keys["s"] && this.char.spriteSheetY > 28){
-            this.char.spriteSheetY = 35;
+        if (this.keys["s"] && this.char.spriteSheetY > 13){
+            this.char.spriteSheetY = 14;
             this.char.moving = true;
             this.char.y = 255;
         }
@@ -94,13 +80,13 @@ class Player {
     }
 
     idleAnimationLogic(){
-        if (this.char.spriteSheetY < 28 && this.char.moving === false){
+        if (this.char.spriteSheetY < 14 && this.char.moving === false){
             if (this.char.spriteSheetY < 8) this.char.spriteSheetY++
             else this.char.spriteSheetY = 0;
         }
-        if (this.char.spriteSheetY > 28 && this.char.moving === false){
-            if (this.char.spriteSheetY < 55) this.char.spriteSheetY++;
-            else this.char.spriteSheetY = 47;
+        if (this.char.spriteSheetY > 13 && this.char.moving === false){
+            if (this.char.spriteSheetY < 27) this.char.spriteSheetY++;
+            else this.char.spriteSheetY = 19;
         }
     }
 
@@ -117,14 +103,7 @@ class Player {
             this.char.width, 
             this.char.height)
         this.move();
-        // requestAnimationFrame(this.animate.bind(this));
     }
 }
-// A (left) => 65
-// S (duck) => 83
-// D (right) => 68
-// SPACE (jump) => 32
-// frames 0-8 are idle animations for right facing
-// frames 47-55 are idle animations for left facing
 
 export default Player

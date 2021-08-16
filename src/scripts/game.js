@@ -15,7 +15,7 @@ class SnowBrawl {
         this.now = "";
         this.then = "";
         this.elapsed = "";
-        this.startAnimating(30);
+        this.startAnimating(15);
         this.movementController();
     }
 //event handler
@@ -55,9 +55,9 @@ class SnowBrawl {
             // })
             this.snowball.animate();
             this.player.idleAnimationLogic();
-            if (this.utilities.detectCollision(this.player, this.snowball)){
-                alert('ya dead kid');
-            }
+            // if (this.utilities.detectCollision(this.player, this.snowball)){
+            //     alert('ya dead kid');
+            // }
         }
     }
 
