@@ -24,7 +24,7 @@ class Player {
             moving: false,
             jumping: false,
             frameCount: 0,
-            jumpStrength: 9,
+            jumpStrength: 45,
             gravity: 5
             // lives: 3
         };
@@ -82,13 +82,12 @@ class Player {
             this.char.y = 245;
         }
         if (this.keys[" "] && this.char.jumping === false){
-            for (let i = 0; i < 5; i++) {
-                this.char.jumping = true;
-                this.char.y -= this.char.jumpStrength;
-            }
+            this.char.jumping = true;
+            this.char.y -= this.char.jumpStrength;
+    
             this.char.moving = true;
         }
-        if (this.keys[" "] === undefined && this.char.y <= 245){
+        if (this.keys[" "] === undefined && this.char.y <= 245 && !this.keys["a"] && !this.keys["d"]){
             this.char.y += this.char.gravity;
         }
         if (this.keys["s"] && this.char.spriteSheetY < 14){
@@ -105,7 +104,7 @@ class Player {
 
     idleAnimationLogic(){
         if (this.char.spriteSheetY < 14 && this.char.moving === false){
-            if (this.char.frameCount < 5){
+            if (this.char.frameCount < 7){
                 this.char.frameCount++;
             } else if (this.char.spriteSheetY < 8){
                 this.char.spriteSheetY++;
@@ -117,7 +116,7 @@ class Player {
             this.char.y = 245;
         }
         if (this.char.spriteSheetY > 13 && this.char.moving === false){
-            if (this.char.frameCount < 5){
+            if (this.char.frameCount < 7){
                 this.char.frameCount++;
             } else if (this.char.spriteSheetY < 27){
                 this.char.spriteSheetY++;
