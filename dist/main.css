@@ -15,11 +15,25 @@
 
 .snowcontainer {
   position: absolute;
-  top: 11%;
+  top: 15.5%;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2;
+}
+
+body {
+  min-height: 90vh;
+  background: url("../src/assets/websiteBG.gif");
+  background-size: cover;
+  mix-blend-mode: color-burn;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 50px;
 }

@@ -12,9 +12,4 @@ class Utilities {
     }
 }
 
-// (player.char.x + 5 > (snowball.ball.x + 5) + snowball.ball.width - 5 ||
-//             (player.char.x + 5) + player.char.width - 5 < snowball.ball.x + 5||
-//             player.char.y + 5 > (snowball.ball.y + 5) + snowball.ball.height - 5 ||
-//             (player.char.y + 5) + player.char.height - 5 < snowball.ball.y + 5)
-
 export default Utilities

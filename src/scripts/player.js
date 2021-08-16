@@ -7,7 +7,7 @@ import bearBoy from "../assets/bearBoySpriteSheetUpdated.png"
 
 
 const platform = new Image();
-platform.src = "../snowbrawl/src/assets/platform.png"
+platform.src = "../snowbrawl/src/assets/newPlatform.png"
 
 class Player {
     constructor(ctx){
@@ -48,14 +48,14 @@ class Player {
 
     move(){
         // debugger
-        if (this.keys["a"]&& this.char.x > 180){
+        if (this.keys["a"] && this.char.x > 160){
             if (this.char.spriteSheetY >= 17) this.char.spriteSheetY--
             else this.char.spriteSheetY = 17;
      
             this.char.x -= this.char.speed;
             this.char.moving = true;
         }
-        if (this.keys["d"] && this.char.x < 710){
+        if (this.keys["d"] && this.char.x < 690){
             if (this.char.spriteSheetY <= 10) this.char.spriteSheetY++
             else this.char.spriteSheetY = 10;
         
@@ -92,7 +92,7 @@ class Player {
 
     animate(){
         this.ctx.clearRect(0, 0, 960, 480);
-        this.ctx.drawImage(platform, 230, 327)
+        this.ctx.drawImage(platform, 200, 85)
         this.drawBearBoy(this.spriteSheet,
             this.char.spriteSheetY * this.char.width,
             this.char.spriteSheetX * this.char.width, 
