@@ -20,8 +20,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const amountSnowflakes = 250;
     let snowFlakes = [];
-    const width = 960;
-    const height = 480;
 
     function random(min, max){
         return min + Math.random() * (max - min + 1); //picks random number between min and max

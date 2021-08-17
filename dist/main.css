@@ -10,7 +10,7 @@
 #gameCanvas {
   margin-top: 100px;
   border: 6px #65d7eb solid;
-  background-image: url(../src/assets/background.png);
+  background-image: url(53041c3caee3adb584f7.png);
 }
 
 .snowcontainer {
@@ -26,7 +26,7 @@
 
 body {
   min-height: 90vh;
-  background: url("../src/assets/websiteBG.jpg");
+  background: url(c07efe1e06706820ec28.jpg);
   background-size: cover;
   mix-blend-mode: color-burn;
 }

@@ -24,8 +24,8 @@ class Player {
             moving: false,
             jumping: false,
             frameCount: 0,
-            jumpStrength: 45,
-            gravity: 5
+            jumpStrength: 40,
+            gravity: 4
             // lives: 3
         };
 
@@ -40,7 +40,8 @@ class Player {
     onKeydown(e){
         this.keys[e.key] = true;
         this.char.moving = true;
-        console.log(this.keys);;
+        this.char.jumping = false;
+        console.log(this.keys);
     }
 
     onKeyup(e){
@@ -50,7 +51,6 @@ class Player {
     }
 
     move(){
-        // debugger
         if (this.keys["a"] && this.char.x > 160){
             if (this.char.frameCount < 5){
                 this.char.frameCount++;
@@ -64,7 +64,6 @@ class Player {
             
             this.char.x -= this.char.speed;
             this.char.moving = true;
-            this.char.y = 245;
         }
         if (this.keys["d"] && this.char.x < 690){
             if (this.char.frameCount < 5){
@@ -76,20 +75,16 @@ class Player {
                 this.char.spriteSheetY = 10;
                 this.char.frameCount = 0;
             }
-
             this.char.x += this.char.speed;
             this.char.moving = true;
-            this.char.y = 245;
         }
         if (this.keys[" "] && this.char.jumping === false){
-            this.char.jumping = true;
             this.char.y -= this.char.jumpStrength;
-    
+            this.char.jumping = true;
             this.char.moving = true;
         }
-        if (this.keys[" "] === undefined && this.char.y <= 245 && !this.keys["a"] && !this.keys["d"]){
-            this.char.y += this.char.gravity;
-        }
+        if (!this.keys[" "] && this.char.y < 245) this.char.y += this.char.gravity;
+        
         if (this.keys["s"] && this.char.spriteSheetY < 14){
             this.char.spriteSheetY = 13;
             this.char.moving = true;

@@ -30,12 +30,10 @@ class Snowball {
 
     letFlyRight(){
         this.ball.x += this.ball.speed
-        // this.ball.frameY++
     }
 
     letFlyLeft(){
         this.ball.x -= this.ball.speed
-        // this.ball.frameY++
     }
 
     animate(){
