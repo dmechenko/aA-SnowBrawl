@@ -10,6 +10,7 @@ class Snowball {
             // x: 960,
             x: leftOrRight[Math.floor(Math.random() * duckOrNot.length)],
             y: duckOrNot[Math.floor(Math.random() * duckOrNot.length)],
+            // add snowballs coming from the top later on
             width: 30,
             height: 30,
             frameX: 0,

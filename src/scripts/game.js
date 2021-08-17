@@ -45,12 +45,12 @@ class SnowBrawl {
     }
 
     animate(){
-        if (this.gameOver){
-            this.ctx.fillStyle = "#FF0000";
-            this.ctx.font = 'small-caps bold 72px Calibri'
-            this.ctx.fillText('game over!', 300, 150)
-            return;
-        }
+        // if (this.gameOver){
+        //     this.ctx.fillStyle = "#FF0000";
+        //     this.ctx.font = 'small-caps bold 72px Calibri'
+        //     this.ctx.fillText('game over!', 300, 150)
+        //     return;
+        // }
         requestAnimationFrame(this.animate.bind(this));
         this.now = Date.now();
         this.elapsed = this.now - this.then;
@@ -69,7 +69,7 @@ class SnowBrawl {
     createSnowball(){
         if (this.spawnSnowball % 100 === 0){
             this.difficulty++;
-            this.snowballArray.push(new Snowball(this.ctx, this.difficulty + 0.25));
+            this.snowballArray.push(new Snowball(this.ctx, this.difficulty + 0.10));
             console.log(this.snowballArray.length);
         }
         for (let i = 0; i < this.snowballArray.length; i++) {
