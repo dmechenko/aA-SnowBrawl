@@ -40,14 +40,12 @@ class Player {
     onKeydown(e){
         this.keys[e.key] = true;
         this.char.moving = true;
-        this.char.jumping = false;
         console.log(this.keys);
     }
 
     onKeyup(e){
         delete this.keys[e.key];
         this.char.moving = false;
-        this.char.jumping = false;
     }
 
     move(){
@@ -78,13 +76,15 @@ class Player {
             this.char.x += this.char.speed;
             this.char.moving = true;
         }
-        if (this.keys[" "] && this.char.jumping === false){
+        if (this.keys[" "] && !this.char.jumping){
             this.char.y -= this.char.jumpStrength;
             this.char.jumping = true;
             this.char.moving = true;
         }
-        if (!this.keys[" "] && this.char.y < 245) this.char.y += this.char.gravity;
-        
+        if (!this.keys[" "] && this.char.y < 245){
+            this.char.y += this.char.gravity;
+        }
+
         if (this.keys["s"] && this.char.spriteSheetY < 14){
             this.char.spriteSheetY = 13;
             this.char.moving = true;
@@ -99,7 +99,7 @@ class Player {
 
     idleAnimationLogic(){
         if (this.char.spriteSheetY < 14 && this.char.moving === false){
-            if (this.char.frameCount < 7){
+            if (this.char.frameCount < 10){
                 this.char.frameCount++;
             } else if (this.char.spriteSheetY < 8){
                 this.char.spriteSheetY++;
@@ -111,7 +111,7 @@ class Player {
             this.char.y = 245;
         }
         if (this.char.spriteSheetY > 13 && this.char.moving === false){
-            if (this.char.frameCount < 7){
+            if (this.char.frameCount < 10){
                 this.char.frameCount++;
             } else if (this.char.spriteSheetY < 27){
                 this.char.spriteSheetY++;
@@ -136,6 +136,7 @@ class Player {
             this.char.width, 
             this.char.height)
         this.move();
+        if (this.char.y === 245) this.char.jumping = false;
     }
 }
 

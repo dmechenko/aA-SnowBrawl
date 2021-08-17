@@ -48,7 +48,7 @@ class SnowBrawl {
         if (this.gameOver){
             this.ctx.fillStyle = "#FF0000";
             this.ctx.font = 'small-caps bold 72px Calibri'
-            this.ctx.fillText('get fucked kid', 300, 150)
+            this.ctx.fillText('game over!', 300, 150)
             return;
         }
         requestAnimationFrame(this.animate.bind(this));
