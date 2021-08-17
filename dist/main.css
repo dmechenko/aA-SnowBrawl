@@ -10,7 +10,7 @@
 #gameCanvas {
   margin-top: 100px;
   border: 6px #65d7eb solid;
-  background-image: url(53041c3caee3adb584f7.png);
+  background-image: url(edabb3838f6c1892f282.png);
 }
 
 .snowcontainer {
@@ -26,8 +26,9 @@
 
 body {
   min-height: 90vh;
-  background: url(759021b631e9324b3266.jpg);
-  background-size: cover;
+  background: url(38c45f1bf21cdd8421ec.jpg);
+  background-position-x: left;
+  background-position-y: top;
   mix-blend-mode: color-burn;
 }
 
@@ -36,4 +37,31 @@ body {
   justify-content: center;
   position: relative;
   top: 50px;
+}
+
+#instructions {
+  background: white;
+  border: 3px #65d7eb solid;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  border-radius: 3px;
+  opacity: 75%;
+  font-family: calibri;
+  flex-direction: column;
+  transform: translate(50%, 50%);
+  margin: auto;
+}
+
+.hidden p {
+  display: none;
+}
+
+footer {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

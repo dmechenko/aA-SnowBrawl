@@ -21,6 +21,17 @@ class SnowBrawl {
         this.difficulty = 5;
         this.gameOver = false;
         this.movementController();
+    }
+
+    startGame(){
+        this.player = new Player(this.ctx);
+        this.ctx.font = 'small-caps bold 36px Calibri'
+        this.snowballArray = [];
+        this.spawnSnowball = 0;
+        this.score = 0;
+        this.difficulty = 5;
+        this.gameOver = false;
+        this.ctx.clearRect(0, 0, 960, 480);
         this.startAnimating(60);
     }
 
@@ -45,12 +56,18 @@ class SnowBrawl {
     }
 
     animate(){
-        // if (this.gameOver){
-        //     this.ctx.fillStyle = "#FF0000";
-        //     this.ctx.font = 'small-caps bold 72px Calibri'
-        //     this.ctx.fillText('game over!', 300, 150)
-        //     return;
-        // }
+        if (this.gameOver){
+            this.ctx.fillStyle = "#db4b54";
+            this.ctx.font = 'small-caps bold 72px Calibri'
+            this.ctx.fillText('game over!', 300, 150)
+            this.ctx.strokeStyle = "white";
+            this.ctx.strokeText('game over!', 300, 150)
+            this.ctx.fillStyle = "#db4b54";
+            this.ctx.fillText('press enter to restart', 145, 220)
+            this.ctx.strokeStyle = "white";
+            this.ctx.strokeText('press enter to restart', 145, 220)
+            return;
+        }
         requestAnimationFrame(this.animate.bind(this));
         this.now = Date.now();
         this.elapsed = this.now - this.then;
@@ -69,7 +86,7 @@ class SnowBrawl {
     createSnowball(){
         if (this.spawnSnowball % 100 === 0){
             this.difficulty++;
-            this.snowballArray.push(new Snowball(this.ctx, this.difficulty + 0.10));
+            this.snowballArray.push(new Snowball(this.ctx, this.difficulty + 0.10 * (Math.random() + 1)));
             console.log(this.snowballArray.length);
         }
         for (let i = 0; i < this.snowballArray.length; i++) {

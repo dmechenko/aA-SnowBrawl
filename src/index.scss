@@ -24,13 +24,41 @@
 body {
     min-height: 90vh;
     background: url("../src/assets/websiteBG.jpg");
-    background-size: cover;
+    background-position-x: left;
+    background-position-y: top;
     mix-blend-mode: color-burn;
 }
 
-.title{
+.title {
     display: flex;
     justify-content: center;
     position: relative;
     top: 50px;
+}
+
+#instructions {
+    background: white;
+    border: 3px rgb(101, 215, 235) solid;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    border-radius: 3px;
+    opacity: 75%;
+    font-family: calibri;
+    flex-direction: column;
+    transform: translate(50%, 50%);
+    margin: auto;
+}
+
+.hidden p{
+    display: none;
+}
+
+footer {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }

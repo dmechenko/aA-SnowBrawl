@@ -25,7 +25,7 @@ class Player {
             jumping: false,
             frameCount: 0,
             jumpStrength: 40,
-            gravity: 4
+            gravity: 3
             // lives: 3
         };
 
@@ -62,6 +62,7 @@ class Player {
             
             this.char.x -= this.char.speed;
             this.char.moving = true;
+            this.char.jumping = false;
         }
         if (this.keys["d"] && this.char.x < 690){
             if (this.char.frameCount < 5){
@@ -75,11 +76,13 @@ class Player {
             }
             this.char.x += this.char.speed;
             this.char.moving = true;
+            this.char.jumping = false;
         }
         if (this.keys[" "] && !this.char.jumping){
             this.char.y -= this.char.jumpStrength;
             this.char.jumping = true;
             this.char.moving = true;
+            delete this.keys[" "];
         }
         if (!this.keys[" "] && this.char.y < 245){
             this.char.y += this.char.gravity;
@@ -125,6 +128,7 @@ class Player {
     }
 
     animate(){
+        this.char.y === 245 ? this.char.jumping = false : this.char.jumping = true;
         this.ctx.drawImage(platform, 200, 80)
         this.drawBearBoy(this.spriteSheet,
             this.char.spriteSheetY * this.char.width,
@@ -136,7 +140,6 @@ class Player {
             this.char.width, 
             this.char.height)
         this.move();
-        if (this.char.y === 245) this.char.jumping = false;
     }
 }
 
