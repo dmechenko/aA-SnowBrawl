@@ -22,9 +22,11 @@ document.addEventListener("DOMContentLoaded", function(){
     // let button = document.createElement('button')
 
     window.addEventListener('keydown', function(e){
-        if (e.key === "Enter") game.startGame();
-        let inst = document.getElementById('instructions')
-        inst.classList.add('hidden')
+        if (e.key === "Enter"){
+            game.startGame();
+            let inst = document.getElementById('instructions');
+            inst.classList.add('hidden');
+        }   
     })
 
     const snowCanvas = document.getElementById("snowflakes");

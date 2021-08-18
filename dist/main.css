@@ -1,6 +1,10 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+@font-face {
+  font-family: pixel;
+  src: url(06b18e478ba7015835a5.ttf);
+}
 .container {
   display: flex;
   justify-content: center;
@@ -40,6 +44,7 @@ body {
 }
 
 #instructions {
+  left: 15%;
   background: white;
   border: 3px #65d7eb solid;
   position: absolute;
@@ -49,14 +54,36 @@ body {
   z-index: 3;
   border-radius: 3px;
   opacity: 75%;
-  font-family: calibri;
+  font-family: pixel;
+  font-size: 24px;
   flex-direction: column;
   transform: translate(50%, 50%);
-  margin: auto;
+  width: 700px;
+  list-style: none;
+  padding: 5px;
+  top: 20px;
+  text-align: center;
 }
 
-.hidden p {
-  display: none;
+#instructions li:first-child {
+  font-weight: bold;
+  font-size: 48px;
+}
+
+.hidden {
+  visibility: hidden;
+  background: none;
+  border: none;
+  list-style: none;
+  opacity: 100%;
+}
+
+.hidden li {
+  visibility: hidden;
+  background: none;
+  border: none;
+  list-style: none;
+  opacity: 100%;
 }
 
 footer {
@@ -64,4 +91,8 @@ footer {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+footer li {
+  list-style: none;
 }
