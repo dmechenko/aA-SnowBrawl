@@ -1,7 +1,7 @@
-import bearBoy from "../assets/bearBoySpriteSheetUpdated.png"
+// import bearBoy from "src/assets/bearBoySpriteSheetUpdated.png"
 
 const platform = new Image();
-platform.src = "../assets/newPlatform.png"
+platform.src = "src/assets/newPlatform.png"
 
 class Player {
     constructor(ctx){
@@ -24,7 +24,7 @@ class Player {
         };
 
         this.spriteSheet = new Image();
-        this.spriteSheet.src = bearBoy;
+        this.spriteSheet.src = "src/assets/bearBoySpriteSheetUpdated.png" //bearBoy;
     }
 
     drawBearBoy(img, sX, sY, sW, sH, dX, dY, dW, dH) {

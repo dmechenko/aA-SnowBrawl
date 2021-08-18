@@ -1,4 +1,4 @@
-import snowball from "../assets/downscaledSnowball.png"
+// import snowball from "src/assets/downscaledSnowball.png"
 
 const duckOrNot = [270, 310];
 const leftOrRight = [0, 960];
@@ -21,7 +21,7 @@ class Snowball {
         this.initialX = this.ball.x
 
         this.spriteSheet = new Image();
-        this.spriteSheet.src = snowball
+        this.spriteSheet.src = "src/assets/downscaledSnowball.png" //snowball
     }
 
     drawSnowball(img, sX, sY, sW, sH, dX, dY, dW, dH) {
