@@ -90,7 +90,7 @@ class SnowBrawl {
         if (this.spawnSnowball % 100 === 0){
             this.difficulty++;
             this.snowballArray.push(new Snowball(this.ctx, this.difficulty + 0.10 * (Math.random() + 1)));
-            console.log(this.snowballArray.length);
+            // console.log(this.snowballArray.length);
         }
         for (let i = 0; i < this.snowballArray.length; i++) {
             this.snowballArray[i].animate();

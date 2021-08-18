@@ -34,7 +34,7 @@ class Player {
     onKeydown(e){
         this.keys[e.key] = true;
         this.char.moving = true;
-        console.log(this.keys);
+        // console.log(this.keys);
     }
 
     onKeyup(e){
