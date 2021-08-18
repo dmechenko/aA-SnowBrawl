@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <script src="./dist/main.js"></script>
     <title>SnowBrawl</title>
 </head>
@@ -15,24 +17,24 @@
         <img src="./src/assets/title.png">
     </div>
 
-    <div id="instructions">
-        <li>Welcome to SnowBrawl!</li> 
-        <li>You play as the Bearling; dodge the snowballs coming from the left and right of the screen.</li>
-        <br>
-        <li>Be careful though! Snowballs are aimed at either your upper or lower body and get fast very quickly.</li>
-        <br>
-        <li>Jump and duck appropriately, and go for a high score!!</li>
-        <br>
-        <li>Controlling the Bearling:</li>
-        <li>'A' to move left. 'S' to duck. 'D' to move right. 'Spacebar' to jump.</li>
-        <br>
-        <li>Press Enter to start the game!</li>
-        <br>
-        <li>Pro Tip: Full screen your browser for optimal performance!</li>
-    </div>
-
+    
     <div class="container">
         <canvas id="gameCanvas"></canvas>
+        <div id="instructions">
+            <li>Welcome to SnowBrawl!</li> 
+            <li>You play as the Bearling; dodge the snowballs coming from the left and right of the screen.</li>
+            <br>
+            <li>Be careful though! Snowballs are aimed at either your upper or lower body and get fast very quickly.</li>
+            <br>
+            <li>Jump and duck appropriately, and go for a high score!!</li>
+            <br>
+            <li>Controlling the Bearling:</li>
+            <li>'A' to move left. 'S' to duck. 'D' to move right. 'Spacebar' to jump.</li>
+            <br>
+            <li>Press Enter to start the game!</li>
+            <br>
+            <li>Pro Tip: Full screen your browser for optimal performance!</li>
+        </div>
     </div>
     
     <div class="snowcontainer">
@@ -40,15 +42,18 @@
     </div>
 
     <footer>
-        <li>
-            game made by me
-        </li>
-        <li>
-            <nav>
-                <a href="">github</a>
-                <a href="">linkedin</a>
-            </nav>
-        </li>
+        <div class="footer-contents">
+            <h3>Created by Daniel Mechenko</h3>
+            <p>Game logic built with JavaScript and brought to life with HTML Canvas.</p>
+            <p>Images sourced from free sprite libraries, backgrounds sourced from Google Images.</p>
+            <ul class="socials">
+                <li><a id="githubicon" href="https://github.com/dmechenko"><img src="https://img.icons8.com/fluency-systems-regular/35/ffffff/github.png"/></a></li>
+                <li><a id="linkedinicon" href="https://www.linkedin.com/in/dmechenko/"><img src="https://img.icons8.com/ios-filled/35/ffffff/linkedin.png"/></a></li>
+            </ul>
+        </div>
+        <div class="footer-end">
+            <p></p>
+        </div>
     </footer>
 </body>
 

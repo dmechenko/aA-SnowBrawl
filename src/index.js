@@ -8,18 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
     canvas.width = 960;
     canvas.height = 480;
 
-    // add event listener => on enter => new game(ctx)
-    // new SnowBrawl(ctx)
-
-    // window.addEventListener('keydown', function(e){
-    //     if (e.key === "Enter"){
-    //         new SnowBrawl(ctx)
-    //     }
-    // })
-
     let game = new SnowBrawl(ctx);
-
-    // let button = document.createElement('button')
 
     window.addEventListener('keydown', function(e){
         if (e.key === "Enter"){

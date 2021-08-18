@@ -7,7 +7,6 @@ class Snowball {
     constructor(ctx, speed = 5){
         this.ctx = ctx;
         this.ball = {
-            // x: 960,
             x: leftOrRight[Math.floor(Math.random() * duckOrNot.length)],
             y: duckOrNot[Math.floor(Math.random() * duckOrNot.length)],
             // add snowballs coming from the top later on

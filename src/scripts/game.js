@@ -5,7 +5,7 @@ import Utilities from "./utilities";
 class SnowBrawl {
     constructor(ctx){
         this.ctx = ctx;
-        this.ctx.font = 'small-caps bold 36px Calibri'
+        this.ctx.font = 'small-caps bold 36px pixel'
         this.snowballArray = [];
         this.player = new Player(this.ctx);
         this.snowball = new Snowball(this.ctx)
@@ -25,7 +25,7 @@ class SnowBrawl {
 
     startGame(){
         this.player = new Player(this.ctx);
-        this.ctx.font = 'small-caps bold 36px Calibri'
+        this.ctx.font = 'small-caps bold 36px pixel'
         this.snowballArray = [];
         this.spawnSnowball = 0;
         this.score = 0;
@@ -57,15 +57,18 @@ class SnowBrawl {
 
     animate(){
         if (this.gameOver){
+            let youlost = new Audio("./src/assets/game_over.wav");
+            youlost.volume = 0.1;
+            youlost.play();
             this.ctx.fillStyle = "#db4b54";
-            this.ctx.font = 'small-caps bold 72px Calibri'
-            this.ctx.fillText('game over!', 300, 150)
+            this.ctx.font = 'small-caps bold 72px pixel'
+            this.ctx.fillText('game over!', 360, 150)
             this.ctx.strokeStyle = "white";
-            this.ctx.strokeText('game over!', 300, 150)
+            this.ctx.strokeText('game over!', 360, 150)
             this.ctx.fillStyle = "#db4b54";
-            this.ctx.fillText('press enter to restart', 145, 220)
+            this.ctx.fillText('press enter to restart', 215, 220)
             this.ctx.strokeStyle = "white";
-            this.ctx.strokeText('press enter to restart', 145, 220)
+            this.ctx.strokeText('press enter to restart', 215, 220)
             return;
         }
         requestAnimationFrame(this.animate.bind(this));
@@ -79,7 +82,7 @@ class SnowBrawl {
             this.player.animate();
             this.createSnowball();
             this.player.idleAnimationLogic();
-            this.spawnSnowball++
+            this.spawnSnowball++;
         }
     }
 

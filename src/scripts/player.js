@@ -1,10 +1,4 @@
-// import bearBoy from "../assets/BearBoy.png"
-// import bearBoyIdleRight from "../assets/bearBoyIdleRight.png"
-// import bearBoyIdleLeft from "../assets/bearBoyIdleLeft.png"
-// import bearBoyRunRight from "../assets/bearBoyRunRight.png"
-// import bearBoyRunLeft from "../assets/bearBoyRunLeft.png"
 import bearBoy from "../assets/bearBoySpriteSheetUpdated.png"
-
 
 const platform = new Image();
 platform.src = "../snowbrawl/src/assets/newPlatform.png"
@@ -50,7 +44,7 @@ class Player {
 
     move(){
         if (this.keys["a"] && this.char.x > 160){
-            if (this.char.frameCount < 5){
+            if (this.char.frameCount < 10){
                 this.char.frameCount++;
             } else if (this.char.spriteSheetY >= 17){
                 this.char.spriteSheetY--;
@@ -65,7 +59,7 @@ class Player {
             this.char.jumping = false;
         }
         if (this.keys["d"] && this.char.x < 690){
-            if (this.char.frameCount < 5){
+            if (this.char.frameCount < 10){
                 this.char.frameCount++;
             } else if (this.char.spriteSheetY <= 10){
                 this.char.spriteSheetY++;
@@ -79,6 +73,9 @@ class Player {
             this.char.jumping = false;
         }
         if (this.keys[" "] && !this.char.jumping){
+            let jump = new Audio("./src/assets/jump2.wav");
+            jump.volume = 0.2;
+            jump.play();
             this.char.y -= this.char.jumpStrength;
             this.char.jumping = true;
             this.char.moving = true;
