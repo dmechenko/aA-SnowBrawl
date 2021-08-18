@@ -1,7 +1,7 @@
 import bearBoy from "../assets/bearBoySpriteSheetUpdated.png"
 
 const platform = new Image();
-platform.src = "../snowbrawl/src/assets/newPlatform.png"
+platform.src = "./snowbrawl/src/assets/newPlatform.png"
 
 class Player {
     constructor(ctx){
