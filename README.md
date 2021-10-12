@@ -1,5 +1,7 @@
 # SnowBrawl!!
 
+[Live Link](https://dmechenko.github.io/aA-SnowBrawl/)
+
 ## 1. Background & Overview
 
 SnowBrawl will be a game that gets more intense the longer you can stay alive. Players will be dodging snowballs coming from either side of the screen. The two ways to dodge the snowballs are either ducking under them or jumping over them. This'll be handled using collision detection.
@@ -11,15 +13,17 @@ You'll start in the middle of a platform that is rendered in front of snowy moun
 ## 2. Functionality
 
 In SnowBrawl, players will be able to:
-* Initiate a new game by pressing start.
-* Toggle sounds/music.
-* Move around and dodge incoming snowballs.
-* Keep track of their 'lives' displayed using hearts.
-* Lose hearts on hit. The game will end when you take a hit and have no remaining hearts.
+
+- Initiate a new game by pressing start.
+- Toggle sounds/music.
+- Move around and dodge incoming snowballs.
+- Keep track of their 'lives' displayed using hearts.
+- Lose hearts on hit. The game will end when you take a hit and have no remaining hearts.
 
 The following will also be available:
-* An instructional guide describing the mechanics and how to play.
-* An up-to-date READme
+
+- An instructional guide describing the mechanics and how to play.
+- An up-to-date READme
 
 ## 3. Wireframes
 
@@ -47,10 +51,9 @@ Wednesday 8-18: Styling and layout polishing, making sure that everything works.
 
 Thursday 8-19: Final touches and online launch!!
 
-
 ## 6. Bonus Features
 
 Upon completion of V1.0 of SnowBrawl, the following will be added if time allows:
 
-* Power-ups such as double jump, extra life, time slow.
-* A separate snow lodge where your character can just relax and have a cup of tea!
+- Power-ups such as double jump, extra life, time slow.
+- A separate snow lodge where your character can just relax and have a cup of tea!

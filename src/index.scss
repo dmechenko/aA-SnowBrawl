@@ -19,13 +19,14 @@
 
 .snowcontainer {
   position: absolute;
-  top: 14.5%;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
+  top: 154px;
+  // top: 14.5%;
+  // left: 0;
+  // right: 0;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // z-index: 2;
 }
 
 body {
@@ -64,7 +65,8 @@ body {
   width: 700px;
   list-style: none;
   padding: 5px;
-  top: 20%;
+  // top: 20%;
+  top: 220px;
   text-align: center;
 }
 
@@ -120,6 +122,9 @@ footer {
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  h4 {
+    margin-top: 5px;
+  }
 }
 
 .footer-contents p {
@@ -133,6 +138,7 @@ footer {
   align-items: center;
   justify-content: center;
   padding-right: 25px;
+  margin-bottom: 0px;
 }
 
 .socials img {
