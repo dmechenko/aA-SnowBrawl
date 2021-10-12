@@ -6,7 +6,7 @@
 
 **SnowBrawl** is a fun and addicting original platform game. SnowBrawl was built using only vanilla JavaScript and HTML Canvas.
 
-Check out the live site [here](https://dmechenko.github.io/aA-SnowBrawl/)
+Check out the live site [here](https://dmechenko.github.io/aA-SnowBrawl/).
 
 ## Gameplay
 
@@ -172,6 +172,12 @@ function addToSnowflakes() {
   }
 }
 ```
+
+# Coming Soon
+
+- More randomized snowball trajectories
+- Power ups
+- Difficulty Settings
 
 <!-- # Development ReadMe
 
